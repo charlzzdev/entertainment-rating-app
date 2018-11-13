@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Appbar from './components/Appbar';
+import SearchForm from './components/SearchForm';
+import MusicPlayer from './components/MusicPlayer';
+import MusicDetails from './components/MusicDetails';
+import SimilarContent from './components/SimilarContent';
+import RatingForm from './components/RatingForm';
+import Ratings from './components/Ratings';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+      render() {
+            return (
+                  <div className="App">
+                        <Appbar/>
+                        <div id="main">
+                              <div className="music-wrapper">
+                                    <div className="search">
+                                          <SearchForm/>
+                                          <MusicPlayer/>
+                                    </div>
+                                    <MusicDetails/>
+                                    <RatingForm/>
+                              </div>
+                              <div className="side-content">
+                                    <SimilarContent/>
+                                    <Ratings/>
+                              </div>
+                        </div>
+                  </div>
+            );
+      }
 }
 
 export default App;
