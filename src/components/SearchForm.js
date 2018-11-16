@@ -6,13 +6,13 @@ class SearchForm extends Component {
       submitSearch = (e) => {
             e.preventDefault();
 
-            let musicTitle = document.getElementById('music-title').value;
+            let musicTitle = document.getElementById('music-title');
             let searchResult = {
                   genres: [],
                   genreDescriptions: []
             }
 
-            fetch(`https://api.napster.com/v2.2/search/verbose?apikey=MTFiZGY4NjgtMGM4Ni00YjIwLTk0OGYtYzI1ZWY4OGZjYTNk&per_type_limit=1&query=${musicTitle}&type=track`)
+            fetch(`https://api.napster.com/v2.2/search/verbose?apikey=MTFiZGY4NjgtMGM4Ni00YjIwLTk0OGYtYzI1ZWY4OGZjYTNk&per_type_limit=1&query=${musicTitle.value}&type=track`)
                   .then(res => res.json())
                   .then(data => {
                         let musicData = data.search.data.tracks[0];
@@ -43,6 +43,8 @@ class SearchForm extends Component {
                                     });
                         });
                   });
+
+            musicTitle.value = '';
       }
 
       render(){

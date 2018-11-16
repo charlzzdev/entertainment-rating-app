@@ -3,21 +3,21 @@ import {connect} from 'react-redux';
 
 class MusicPlayer extends Component {
       componentWillReceiveProps(){
-            let musicPlayer = document.querySelector('.music-player');
+            setTimeout(() => {
+                  let musicPlayer = document.querySelector('.music-player');
             
-            let newAudioTag = document.createElement('audio');
-            newAudioTag.setAttribute('controls', '');
+                  let newAudioTag = document.createElement('audio');
+                  newAudioTag.setAttribute('controls', '');
 
-            let newSourceTag = document.createElement('source');
-            newSourceTag.src = this.props.state.searchResult.url;
-            newSourceTag.type = 'audio/mp3';
+                  let newSourceTag = document.createElement('source');
+                  newSourceTag.src = this.props.state.searchResult.url;
+                  newSourceTag.type = 'audio/mp3';
 
-            newAudioTag.appendChild(newSourceTag);
-
-            console.log('received props', newAudioTag, this.props);
-            
-            musicPlayer.children[0].remove();
-            musicPlayer.appendChild(newAudioTag);
+                  newAudioTag.appendChild(newSourceTag);
+                  
+                  musicPlayer.children[0].remove();
+                  musicPlayer.appendChild(newAudioTag);
+            }, 1);
       }
       
       render(){

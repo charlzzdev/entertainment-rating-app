@@ -59,7 +59,8 @@
   border-bottom: 1px solid #1976d2;
 }
 .music-wrapper .music-details {
-  height: 40vh;
+  min-height: 40vh;
+  height: auto;
 }
 .music-wrapper .music-details div ul li {
   margin-left: 2rem;
@@ -97,7 +98,7 @@
   color: #1e88e5;
 }
 
-@media (max-width: 903px) {
+@media (max-width: 1274px) {
   .container {
     padding: 0.5rem 1rem;
   }
@@ -112,6 +113,20 @@
 
   .search {
     flex-direction: column;
+    height: 18vh;
+  }
+
+  audio {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .music-player {
+    border-bottom: none !important;
+    padding: 0;
   }
 
   .search-form, .similar-content, .ratings {
