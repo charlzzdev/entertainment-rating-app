@@ -33,13 +33,20 @@
   flex: 1;
 }
 #main .side-content .similar-content {
-  height: 40vh;
+  min-height: 40vh;
+  height: auto;
   border: 1px solid #1976d2;
   border-top: none;
   border-right: none;
 }
+#main .side-content .similar-content .item {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+}
 #main .side-content .ratings {
-  height: 50vh;
+  min-height: 50vh;
+  height: auto;
   border-left: 1px solid #1976d2;
 }
 
@@ -96,6 +103,7 @@
 
 #artist-name {
   color: #1e88e5;
+  text-decoration: none;
 }
 
 @media (max-width: 1274px) {

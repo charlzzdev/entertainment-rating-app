@@ -16,33 +16,39 @@ class SearchForm extends Component {
                   .then(res => res.json())
                   .then(data => {
                         let musicData = data.search.data.tracks[0];
+                        let allGenres = '';
 
                         musicData.links.genres.ids.forEach(genre => {
-                              fetch(`https://api.napster.com/v2.2/genres/${genre}?apikey=MTFiZGY4NjgtMGM4Ni00YjIwLTk0OGYtYzI1ZWY4OGZjYTNk`)
-                                    .then(res => res.json())
-                                    .then(data => {
-                                          let genreData = data.genres[0];
+                              allGenres += `${genre},`;
+                        });
 
+                        fetch(`https://api.napster.com/v2.2/genres/${allGenres}?apikey=MTFiZGY4NjgtMGM4Ni00YjIwLTk0OGYtYzI1ZWY4OGZjYTNk`)
+                              .then(res => res.json())
+                              .then(data => {
+                                    data.genres.forEach(genre => {
                                           searchResult = {
                                                 albumName: musicData.albumName,
                                                 artistName: musicData.artistName,
                                                 musicName: musicData.name,
                                                 seconds: musicData.playbackSeconds,
                                                 url: musicData.previewURL,
+                                                genreIds: [
+                                                      ...musicData.links.genres.ids
+                                                ],
                                                 genres: [
                                                       ...searchResult.genres,
-                                                      genreData.name
+                                                      genre.name
                                                 ],
                                                 genreDescriptions: [
                                                       ...searchResult.genreDescriptions,
-                                                      genreData.description
+                                                      genre.description
                                                 ]
                                           }
-
-                                          this.props.searchMusic(searchResult);
                                     });
-                        });
-                  });
+
+                                    this.props.searchMusic(searchResult);
+                              });
+                  }).catch(err => console.log('The entered music title was not found.'));
 
             musicTitle.value = '';
       }

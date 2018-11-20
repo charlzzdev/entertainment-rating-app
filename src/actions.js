@@ -4,3 +4,10 @@ export const searchMusic = (music) => {
             music
       }
 }
+
+export const similarContent = (content) => {
+      return {
+            type: 'SIMILAR_CONTENT',
+            content
+      }
+}

@@ -9,6 +9,11 @@ const reducer = (state = initialState, action) => {
                         ...state,
                         searchResult: action.music
                   };
+            case 'SIMILAR_CONTENT':
+                  return {
+                        ...state,
+                        similarContent: action.content
+                  };
             default: return state;
       }
 }
