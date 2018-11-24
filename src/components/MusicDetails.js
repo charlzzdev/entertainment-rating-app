@@ -15,11 +15,10 @@ const MusicDetails = (props) => {
       return(
             <div className="music-details container">
                   {
-                        typeof musicName === 'undefined' ? null :
-                        (
+                        typeof musicName === 'undefined' ? null : (
                               <div>
                                     <h1>{musicName} by
-                                          <a href={`https://www.google.com/search?q=${artistName}`} id="artist-name"> {artistName}</a>
+                                          <a href={`https://www.google.com/search?q=${artistName}`} className="blue" target="blank"> {artistName}</a>
                                     </h1>
                                     <h2>Album: {albumName}</h2>
                                     <ul>

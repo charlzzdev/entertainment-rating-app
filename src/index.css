@@ -35,7 +35,6 @@
 #main .side-content .similar-content {
   min-height: 40vh;
   height: auto;
-  border: 1px solid #1976d2;
   border-top: none;
   border-right: none;
 }
@@ -45,9 +44,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 #main .side-content .ratings {
-  min-height: 50vh;
   height: auto;
-  border-left: 1px solid #1976d2;
 }
 
 .music-wrapper .search {
@@ -57,13 +54,20 @@
 }
 .music-wrapper .search .search-form {
   flex: 2;
-  border: 1px solid #1976d2;
   border-top: none;
   border-left: none;
 }
+.music-wrapper .search .search-form .search-input {
+  border-radius: 50px 0 0 50px;
+}
+.music-wrapper .search .search-form .btn {
+  border-radius: 0 50px 50px 0;
+}
 .music-wrapper .search .music-player {
   flex: 1;
-  border-bottom: 1px solid #1976d2;
+}
+.music-wrapper .search #search-error {
+  color: #d63031;
 }
 .music-wrapper .music-details {
   min-height: 40vh;
@@ -72,15 +76,11 @@
 .music-wrapper .music-details div ul li {
   margin-left: 2rem;
   cursor: help;
-}
-.music-wrapper .music-details #artist-name {
-  color: #1e88e5;
-  text-decoration: none;
+  width: 150px;
 }
 .music-wrapper .rating-form {
   min-height: 41vh;
   height: auto;
-  border-top: 1px solid #1976d2;
   text-align: center;
 }
 .music-wrapper .rating-form i {
@@ -112,6 +112,12 @@
   width: 100%;
 }
 
+.blue {
+  color: #1976d2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .search-input {
   background: #444;
   color: #fff;
@@ -135,6 +141,45 @@
   outline: 0;
 }
 
+.loading-spinner {
+  width: 150px;
+  height: 150px;
+  border: 4px solid #1976d2;
+  border-radius: 50%;
+  border-right: 4px solid #eee;
+  border-top: 4px solid #eee;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  animation: spin 1s ease infinite;
+}
+.loading-spinner::after {
+  content: "";
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: linear-gradient(#1976d2, #333);
+  animation: inner-spin 10s ease infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+@keyframes inner-spin {
+  100% {
+    transform: rotateX(360deg);
+    transform: rotateY(360deg);
+  }
+}
 @media (max-width: 1274px) {
   .container {
     padding: 0.5rem 1rem;
@@ -162,13 +207,7 @@
   }
 
   .music-player {
-    border-bottom: none !important;
     padding: 0;
-  }
-
-  .search-form, .similar-content, .ratings {
-    border: none !important;
-    border-bottom: 1px solid #1976d2 !important;
   }
 }
 @media (min-width: 1274px) {
@@ -178,6 +217,7 @@
     transform: rotateZ(20deg);
     opacity: 0.2;
     right: 35.55%;
+    pointer-events: none;
   }
 }
 

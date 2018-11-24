@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+$main-color: #1976d2;
 
 *{
       margin: 0;
@@ -13,7 +14,7 @@
 
 #app-bar{
       height: 10vh;
-      background: #1976d2;
+      background: $main-color;
       font-size: 1.4rem;
       color: #fff;
       display: flex;
@@ -37,7 +38,6 @@
             .similar-content{
                   min-height: 40vh;
                   height: auto;
-                  border: 1px solid #1976d2;
                   border-top: none;
                   border-right: none;
 
@@ -49,9 +49,7 @@
             }
 
             .ratings{
-                  min-height: 50vh;
                   height: auto;
-                  border-left: 1px solid #1976d2;
             }
       }
 }
@@ -64,14 +62,24 @@
 
             .search-form{
                   flex: 2;
-                  border: 1px solid #1976d2;
                   border-top: none;
                   border-left: none;
+
+                  .search-input{
+                        border-radius: 50px 0 0 50px;
+                  }
+
+                  .btn{
+                        border-radius: 0 50px 50px 0;
+                  }
             }
 
             .music-player{
                   flex: 1;
-                  border-bottom: 1px solid #1976d2;
+            }
+
+            #search-error{
+                  color: #d63031;
             }
       }
       .music-details{
@@ -83,19 +91,14 @@
                         li{
                               margin-left: 2rem;
                               cursor: help;
+                              width: 150px;
                         }
                   }
-            }
-
-            #artist-name{
-                  color: #1e88e5;
-                  text-decoration: none;
             }
       }
       .rating-form{
             min-height: 41vh;
             height: auto;
-            border-top: 1px solid #1976d2;
             text-align: center;
 
             i{
@@ -135,6 +138,12 @@
       }
 }
 
+.blue{
+      color: $main-color;
+      text-decoration: none;
+      cursor: pointer;
+}
+
 .search-input{
       background: #444;
       color: #fff;
@@ -143,7 +152,7 @@
 }
 
 .btn{
-      background: #1976d2;
+      background: $main-color;
       border: 0;
       cursor: pointer;
       width: 25%;
@@ -157,6 +166,48 @@
 
 :focus{
       outline: 0;
+}
+
+.loading-spinner{
+      width: 150px;
+      height: 150px;
+      border: 4px solid $main-color;
+      border-radius: 50%;
+      border-right: 4px solid #eee;
+      border-top: 4px solid #eee;
+      position: relative;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      animation: spin 1s ease infinite;
+
+      &::after{
+            content: '';
+            position: absolute;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: linear-gradient(#1976d2, #333);
+            animation: inner-spin 10s ease infinite;
+      }
+}
+
+@keyframes spin {
+      100%{
+            transform: rotateZ(360deg);
+      }
+}
+
+@keyframes inner-spin {
+      100%{
+            transform: rotateX(360deg);
+            transform: rotateY(360deg);
+      }
 }
 
 @media(max-width: 1274px){
@@ -186,13 +237,7 @@
       }
 
       .music-player{
-            border-bottom: none !important;
             padding: 0;
-      }
-
-      .search-form, .similar-content, .ratings{
-            border: none !important;
-            border-bottom: 1px solid #1976d2 !important;
       }
 }
 
@@ -205,6 +250,7 @@
                         transform: rotateZ(20deg);
                         opacity: 0.2;
                         right: 35.55%;
+                        pointer-events: none;
                   }
             }
       }
