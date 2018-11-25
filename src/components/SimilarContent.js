@@ -21,11 +21,11 @@ class SimilarContent extends Component{
                         allIds += `${id},`;
                   });
 
-                  fetch(`https://api.napster.com/v2.2/genres/${allIds}/tracks/top?apikey=MTFiZGY4NjgtMGM4Ni00YjIwLTk0OGYtYzI1ZWY4OGZjYTNk&limit=3`)
+                  fetch(`https://api.napster.com/v2.2/genres/${allIds}/tracks/top?apikey=MTFiZGY4NjgtMGM4Ni00YjIwLTk0OGYtYzI1ZWY4OGZjYTNk&limit=10`)
                         .then(res => res.json())
                         .then(data => {
                               data.tracks.forEach(track => {
-                                    if(tracks.length < 3){
+                                    if(tracks.length < 10){
                                           tracks = [
                                                 ...tracks,
                                                 {
@@ -57,22 +57,24 @@ class SimilarContent extends Component{
             return(
                   <div className="similar-content container">
                         <h1>Similar Content</h1>
-                        {
-                              this.state.isLoading === true ? (
-                                    <div className="loading-spinner"></div>
-                              ) : (
-                                    typeof this.props.state.similarContent !== 'undefined' ? (
-                                          this.props.state.similarContent.map(content => {
-                                                return (
-                                                      <div key={content.url} className="item">
-                                                            <h2 onClick={this.searchThis} className="blue">{content.name}</h2>
-                                                            <h3>{content.artistName}</h3>
-                                                      </div>
-                                                )
-                                          })
-                                    ) : null
-                              )
-                        }
+                        <div className="wrapper">
+                              {
+                                    this.state.isLoading === true ? (
+                                          <div className="loading-spinner"></div>
+                                    ) : (
+                                          typeof this.props.state.similarContent !== 'undefined' ? (
+                                                this.props.state.similarContent.map(content => {
+                                                      return (
+                                                            <div key={content.url} className="item">
+                                                                  <h2 onClick={this.searchThis} className="blue">{content.name}</h2>
+                                                                  <h3>{content.artistName}</h3>
+                                                            </div>
+                                                      )
+                                                })
+                                          ) : null
+                                    )
+                              }
+                        </div>
                   </div>
             )
       }

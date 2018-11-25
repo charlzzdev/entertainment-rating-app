@@ -35,21 +35,19 @@ $main-color: #1976d2;
       .side-content{
             flex: 1;
             
-            .similar-content{
+            .similar-content, .ratings{
                   min-height: 40vh;
-                  height: auto;
-                  border-top: none;
-                  border-right: none;
-
-                  .item {
-                        margin-top: 0.5rem;
-                        padding: 1rem;
-                        background: rgba(255,255,255,0.1);
-                  }
             }
 
-            .ratings{
-                  height: auto;
+            .item {
+                  margin-top: 0.5rem;
+                  padding: 1rem;
+                  background: rgba(255,255,255,0.1);
+            }
+
+            .wrapper{
+                  overflow-y: scroll;
+                  max-height: 35vh;
             }
       }
 }
@@ -168,6 +166,15 @@ $main-color: #1976d2;
       outline: 0;
 }
 
+::-webkit-scrollbar{
+      background: transparent;
+      width: 2px;
+}
+
+::-webkit-scrollbar-thumb{
+      background: $main-color;
+}
+
 .loading-spinner{
       width: 150px;
       height: 150px;
@@ -238,6 +245,10 @@ $main-color: #1976d2;
 
       .music-player{
             padding: 0;
+      }
+
+      .ratings{
+            min-height: 55vh !important;
       }
 }
 

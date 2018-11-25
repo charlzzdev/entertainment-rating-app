@@ -32,19 +32,17 @@
 #main .side-content {
   flex: 1;
 }
-#main .side-content .similar-content {
+#main .side-content .similar-content, #main .side-content .ratings {
   min-height: 40vh;
-  height: auto;
-  border-top: none;
-  border-right: none;
 }
-#main .side-content .similar-content .item {
+#main .side-content .item {
   margin-top: 0.5rem;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.1);
 }
-#main .side-content .ratings {
-  height: auto;
+#main .side-content .wrapper {
+  overflow-y: scroll;
+  max-height: 35vh;
 }
 
 .music-wrapper .search {
@@ -141,6 +139,15 @@
   outline: 0;
 }
 
+::-webkit-scrollbar {
+  background: transparent;
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1976d2;
+}
+
 .loading-spinner {
   width: 150px;
   height: 150px;
@@ -208,6 +215,10 @@
 
   .music-player {
     padding: 0;
+  }
+
+  .ratings {
+    min-height: 55vh !important;
   }
 }
 @media (min-width: 1274px) {
